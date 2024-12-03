@@ -5,6 +5,7 @@ import { connectDB } from "./lib/db.js";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.routes.js";
+import captainRouter from "./routes/captain.routes.js";
 const app = express();
 
 const port = process.env.PORT || 8000;
@@ -26,7 +27,8 @@ app.use(
   })
 );
 
-app.use("/api/users", userRouter);
+app.use("/api/user", userRouter);
+app.use("/api/captain", captainRouter);
 
 app.use(errorMiddleware);
 
