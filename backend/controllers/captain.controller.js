@@ -6,9 +6,8 @@ import { compare } from "bcrypt";
 export const captainRegister = AsyncHandler(async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return next(new ErrorHandler(errors.array()[0].msg, 404));
   }
-
   const { fullname, email, password, vehicle } = req.body;
 
   const exisitingUser = await Captain.findOne({

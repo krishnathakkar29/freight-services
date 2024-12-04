@@ -15,11 +15,14 @@ router.post(
   [
     body("email").isEmail().withMessage("Invalid Email"),
     body("fullname.firstname")
-      .isLength({ min: 3 })
-      .withMessage("First name must be at least 3 characters long"),
+      .isLength({ min: 1 })
+      .withMessage("First name must be at least 1 characters long"),
+    body("fullname.lastname")
+      .isLength({ min: 1 })
+      .withMessage("Last name must be at least 1 characters long"),
     body("password")
-      .isLength({ min: 6 })
-      .withMessage("Password must be at least 6 characters long"),
+      .isLength({ min: 2 })
+      .withMessage("Password must be at least 2 characters long"),
     body("vehicle.color")
       .isLength({ min: 3 })
       .withMessage("Color must be at least 3 characters long"),
@@ -41,8 +44,8 @@ router.post(
   [
     body("email").isEmail().withMessage("Invalid Email"),
     body("password")
-      .isLength({ min: 6 })
-      .withMessage("Password must be at least 6 characters long"),
+      .isLength({ min: 2 })
+      .withMessage("Password must be at least 2 characters long"),
   ],
   captainLogin
 );

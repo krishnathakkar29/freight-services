@@ -14,9 +14,9 @@ connectDB();
 
 app.use(
   cors({
+    origin: "http://localhost:5173",
     credentials: true,
     methods: ["GET", "PUT", "POST", "DELETE"],
-    origin: "*",
   })
 );
 app.use(cookieParser());
