@@ -71,35 +71,35 @@ function App() {
         <Route
           path="/home"
           element={
-            <UserProtectProvider user={user} redirect="/login">
-              <Home />
-            </UserProtectProvider>
+            // <UserProtectProvider user={user} redirect="/login">
+            <Home />
+            // </UserProtectProvider>
           }
         />
         <Route
           path="/user/logout"
           element={
-            <UserProtectProvider user={user} redirect="/login">
-              <UserLogout />
-            </UserProtectProvider>
+            // <UserProtectProvider user={user} redirect="/login">
+            <UserLogout />
+            // </UserProtectProvider>
           }
         />
         <Route
           path="/captain-home"
           element={
-            <UserProtectProvider user={captain} redirect="/captain-login">
-              <CaptainHome />
-            </UserProtectProvider>
+            // <UserProtectProvider user={captain} redirect="/captain-login">
+            <CaptainHome />
+            // </UserProtectProvider>
           }
         />
-          <Route
-            path="/captain/logout"
-            element={
-              <UserProtectProvider user={captain} redirect="/captain-login">
-                <CaptainLogout />
-              </UserProtectProvider>
-            }
-          />
+        <Route
+          path="/captain/logout"
+          element={
+            // <UserProtectProvider user={captain} redirect="/captain-login">
+            <CaptainLogout />
+            // </UserProtectProvider>
+          }
+        />
       </Routes>
     </>
   );
