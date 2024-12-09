@@ -73,3 +73,7 @@ export const getCaptainProfile = AsyncHandler(async (req, res, next) => {
     user,
   });
 });
+
+export const getCaptain = async (req, res, next) => {
+  return res.status(200).json({ captain: req.captain });
+};

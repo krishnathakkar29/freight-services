@@ -1,10 +1,14 @@
 import express from "express";
-import { isCaptainAuthenticated } from "../middlewares/auth.middleware.js";
+import {
+  authCaptain,
+  isCaptainAuthenticated,
+} from "../middlewares/auth.middleware.js";
 import { body } from "express-validator";
 import {
   captainLogin,
   captainLogout,
   captainRegister,
+  getCaptain,
   getCaptainProfile,
 } from "../controllers/captain.controller.js";
 
@@ -50,7 +54,8 @@ router.post(
   captainLogin
 );
 
-router.get("/profile", isCaptainAuthenticated, getCaptainProfile);
+// router.get("/profile", isCaptainAuthenticated, getCaptainProfile);
+router.get("/profile", authCaptain, getCaptain);
 
 router.get("/logout", isCaptainAuthenticated, captainLogout);
 

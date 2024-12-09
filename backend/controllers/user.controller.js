@@ -69,3 +69,7 @@ export const getMyProfile = AsyncHandler(async (req, res, next) => {
     user,
   });
 });
+
+export const getUserProfile = async (req, res, next) => {
+  return res.status(200).json(req.user);
+};

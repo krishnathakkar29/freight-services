@@ -16,6 +16,8 @@ import { CaptainDataContext } from "./context/CaptainContext";
 import CaptainLogout from "./pages/CaptainLogout";
 import "remixicon/fonts/remixicon.css";
 import Riding from "./pages/Riding";
+import UserProtectWrapper from "./UserProtectWrapper";
+import CaptainProtectWrapper from "./CaptainProtectWrapper";
 
 function App() {
   const navigate = useNavigate();
@@ -24,43 +26,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isCaptainLoading, setIsCaptainLoading] = useState(true);
 
-  useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get(`${import.meta.env.VITE_BASE_URL}/api/user/getmyprofile`, {
-        withCredentials: true,
-      })
-      .then(({ data }) => {
-        if (data.success === true) {
-          setUser(data.user);
-          setIsLoading(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsLoading(false);
-        setUser(null);
-      });
-  }, [user, setUser]);
-
-  useEffect(() => {
-    setIsCaptainLoading(true);
-    axios
-      .get(`${import.meta.env.VITE_BASE_URL}/api/captain/profile`, {
-        withCredentials: true,
-      })
-      .then(({ data }) => {
-        if (data.success === true) {
-          setCaptain(data.user);
-          setIsCaptainLoading(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsCaptainLoading(false);
-        setCaptain(null);
-      });
-  }, [captain, setCaptain]);
+ 
 
   return (
     <>
@@ -74,9 +40,9 @@ function App() {
         <Route
           path="/home"
           element={
-            // <UserProtectProvider user={user} redirect="/login">
-            <Home />
-            // </UserProtectProvider>
+            <UserProtectWrapper>
+              <Home />
+            </UserProtectWrapper>
           }
         />
         <Route
@@ -90,9 +56,9 @@ function App() {
         <Route
           path="/captain-home"
           element={
-            // <UserProtectProvider user={captain} redirect="/captain-login">
-            <CaptainHome />
-            // </UserProtectProvider>
+            <CaptainProtectWrapper>
+              <CaptainHome />
+            </CaptainProtectWrapper>
           }
         />
         <Route

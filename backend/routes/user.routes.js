@@ -2,11 +2,12 @@ import express from "express";
 import { body } from "express-validator";
 import {
   getMyProfile,
+  getUserProfile,
   login,
   logout,
   register,
 } from "../controllers/user.controller.js";
-import { isAuthenticated } from "../middlewares/auth.middleware.js";
+import { authUser, isAuthenticated } from "../middlewares/auth.middleware.js";
 const router = express.Router();
 
 router.post(
@@ -38,6 +39,8 @@ router.post(
 );
 
 router.get("/logout", isAuthenticated, logout);
-router.get("/getmyprofile", isAuthenticated, getMyProfile);
+// router.get("/getmyprofile", isAuthenticated, getMyProfile);
+
+router.get("/profile", authUser, getUserProfile);
 
 export default router;
