@@ -14,6 +14,8 @@ import axios from "axios";
 import CaptainHome from "./pages/CaptainHome";
 import { CaptainDataContext } from "./context/CaptainContext";
 import CaptainLogout from "./pages/CaptainLogout";
+import "remixicon/fonts/remixicon.css";
+import Riding from "./pages/Riding";
 
 function App() {
   const navigate = useNavigate();
@@ -66,6 +68,7 @@ function App() {
         <Route path="/" element={<Start />} />
         <Route path="/login" element={<UserLogin />} />
         <Route path="/signup" element={<UserSignup />} />
+        <Route path="/riding" element={<Riding />} />
         <Route path="/captain-login" element={<CaptainLogin />} />
         <Route path="/captain-signup" element={<CaptainSignup />} />
         <Route
