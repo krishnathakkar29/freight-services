@@ -18,6 +18,7 @@ import "remixicon/fonts/remixicon.css";
 import Riding from "./pages/Riding";
 import UserProtectWrapper from "./UserProtectWrapper";
 import CaptainProtectWrapper from "./CaptainProtectWrapper";
+import CaptainRiding from "./pages/CaptainRiding";
 
 function App() {
   const navigate = useNavigate();
@@ -25,8 +26,6 @@ function App() {
   const { captain, setCaptain } = useContext(CaptainDataContext);
   const [isLoading, setIsLoading] = useState(true);
   const [isCaptainLoading, setIsCaptainLoading] = useState(true);
-
- 
 
   return (
     <>
@@ -37,6 +36,7 @@ function App() {
         <Route path="/riding" element={<Riding />} />
         <Route path="/captain-login" element={<CaptainLogin />} />
         <Route path="/captain-signup" element={<CaptainSignup />} />
+        <Route path="/captain-riding" element={<CaptainRiding />} />
         <Route
           path="/home"
           element={
